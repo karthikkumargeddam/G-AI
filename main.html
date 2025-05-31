@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE Academy - Premium Online Courses</title>
+    <meta name="description" content="Master coding with CSE Academy's premium online courses in programming, AI, web development, and more.">
+    <!-- Theme color for Chrome, Edge, and Android -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#4F46E5">
+    <script>
+      // Dynamically set theme-color for dark mode in all browsers, including Firefox and Opera
+      (function() {
+        function setThemeColor() {
+          var color = window.matchMedia('(prefers-color-scheme: dark)').matches ? '#18181b' : '#4F46E5';
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', color);
+        }
+        setThemeColor();
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeColor);
+      })();
+    </script>
+    <!--[if IE]>
+      <meta name="msapplication-navbutton-color" content="#4F46E5">
+    <![endif]-->
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4F46E5">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4F46E5">
+    <meta name="msapplication-navbutton-color" content="#4F46E5">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4F46E5">
+    <meta name="msapplication-TileColor" content="#4F46E5">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4F46E5">
+    <link rel="icon" href="https://via.placeholder.com/32?text=CSE">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4F46E5',
+              secondary: '#10B981',
+              accent: '#F43F5E',
+              slate: '#0F172A',
+              neutral: '#F1F5F9'
+            },
+            fontFamily: {
+              body: ['"Inter"', 'sans-serif'],
+            },
+            boxShadow: {
+              'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+              'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'slide-up': 'slideUp 0.5s ease-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      .gradient-text {
+        background: linear-gradient(to right, #F97316, #FBBF24);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .course-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      }
+      .hero-bg {
+        background: linear-gradient(135deg, #4F46E5 0%, #A78BFA 100%);
+      }
+      .spinner {
+        border: 2px solid #f3f3f3;
+        border-top: 2px solid #4F46E5;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body class="bg-neutral font-body transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-slate shadow-md sticky top-0 z-50" role="navigation megtalálható
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-primary">CSE Academy</h1>
+      <div class="flex items-center gap-6">
+        <ul class="hidden lg:flex gap-8 text-sm font-medium" role="menubar">
+          <li role="menuitem"><a href="#home" class="hover:text-primary transition-colors">Home</a></li>
+          <li role="menuitem"><a href="#courses" class="hover:text-primary transition-colors">Courses</a></li>
+          <li role="menuitem"><a href="#testimonials" class="hover:text-primary transition-colors">Testimonials</a></li>
+          <li role="menuitem"><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+          <li role="menuitem"><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+        </ul>
+        <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
+          <i class="fas fa-moon text-lg">
+        </button>
+        <button id="mobile-menu-btn" class="lg:hidden" aria-label="Toggle mobile menu"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate shadow-md">
+      <ul class="flex flex-col gap-4 p-4 text-sm font-medium" role="menu">
+        <li role="menuitem"><a href="#home" class="hover:text-primary">Home</a></li>
+        <li role="menuitem"><a href="#courses" class="hover:text-primary">Courses</a></li>
+        <li role="menuitem"><a href="#testimonials" class="hover:text-primary">Testimonials</a></li>
+        <li role="menuitem"><a href="#about" class="hover:text-primary">About</a></li>
+        <li role="menuitem"><a href="#contact" class="hover:text-primary">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Video Preview Modal -->
+   <!-- Video Modal -->
+  <!-- Video Modal -->
+<div id="video-modal"
+class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50 transition-opacity duration-300"
+role="dialog" aria-modal="true">
+
+<div class="relative bg-white dark:bg-gray-900 rounded-3xl p-6 sm:p-8 w-[90%] max-w-4xl shadow-xl transform transition-all duration-300 scale-95">
+
+<!-- Absolute Close Button (Top Right Corner) -->
+<button id="close-video"
+       class="absolute top-4 right-4 text-gray-500 hover:text-red-500 dark:hover:text-red-400 text-2xl transition"
+       aria-label="Close video modal">
+ &times;
+</button>
+
+<!-- Modal Header -->
+<div class="mb-4">
+ <h2 id="video-title" class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">🎬 Course Preview</h2>
+</div>
+
+<!-- Video Player -->
+<div class="rounded-lg overflow-hidden aspect-video">
+ <video id="video-player"
+        controls
+        class="w-full h-full object-contain"
+        aria-label="Course preview video">
+ </video>
+ <!-- Updated video container for vertical aspect -->
+<div class="flex justify-center items-center">
+  <video id="video-player"
+         controls
+         class="max-h-[90vh] max-w-[100%] rounded-xl shadow-xl"
+         aria-label="Course preview video">
+  </video>
+</div>
+
+</div>
+</div>
+</div>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget fixed bottom-6 right-6 z-40">
+    <button id="chat-toggle" class="bg-primary text-white p-4 rounded-full shadow-lg hover:bg-opacity-90" aria-label="Open chat">
+      <i class="fas fa-comment-dots text-xl"></i>
+    </button>
+    <div id="chat-box" class="hidden bg-white dark:bg-gray-800 rounded-2xl shadow-lg w-80 h-[400px] flex flex-col absolute bottom-16 right-0">
+      <div class="bg-primary text-white p-4 rounded-t-2xl flex justify-between items-center">
+        <h3 class="font-semibold">Live Support</h3>
+        <button id="close-chat" class="text-white hover:text-gray-200" aria-label="Close chat">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div id="chat-messages" class="flex-1 p-4 overflow-y-auto text-sm"></div>
+      <div class="p-4 border-t dark:border-gray-700">
+        <input id="chat-input" type="text" placeholder="Type your message..." class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" aria-label="Chat message input">
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-bg text-white py-24 relative overflow-hidden" role="banner">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text animate-slide-up">Master Coding with CSE Academy</h2>
+        <p class="text-lg md:text-xl mb-8" data-i18n="hero.subtitle">Join thousands of learners transforming their careers with our industry-leading courses in programming, AI, and more.</p>
+        <div class="flex justify-center gap-4">
+          <a href="#courses" class="bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all" data-i18n="hero.explore">Explore Courses</a>
+          <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary transition-all" data-i18n="hero.getStarted">Get Started</a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute w-96 h-96 bg-white rounded-full -top-48 -left-48 blur-3xl"></div>
+      <div class="absolute w-96 h-96 bg-primary rounded-full -bottom-48 -right-48 blur-3xl"></div>
+    </div>
+  </section>
+
+  <!-- Course Filter Section -->
+  <section class="py-4 bg-white dark:bg-gray-800 sticky top-0 z-40 shadow-md" role="region" aria-label="Course filter">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div class="w-full md:w-1/3 relative">
+          <div class="relative">
+            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <input type="text" id="course-search" class="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" placeholder="Search courses..." aria-label="Search courses">
+          </div>
+          <div id="search-suggestions" class="absolute w-full bg-white dark:bg-gray-700 rounded-lg shadow-lg mt-1 hidden text-sm"></div>
+        </div>
+        <select id="course-category" class="w-full md:w-1/4 p-2 border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" aria-label="Select course category">
+          <option value="all" data-i18n="filter.allCategories">All Categories</option>
+          <option value="programming" data-i18n="filter.programming">Programming</option>
+          <option value="web" data-i18n="filter.web">Web Development</option>
+          <option value="ai" data-i18n="filter.ai">AI & ML</option>
+          <option value="cloud" data-i18n="filter.cloud">Cloud Computing</option>
+          <option value="data" data-i18n="filter.data">Data Science</option>
+          <option value="other" data-i18n="filter.other">Other</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses" class="py-16 bg-neutral dark:bg-gray-900" role="region" aria-label="Courses">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-i18n="courses.title">Discover Our Courses</h2>
+      <div id="courses-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+      <div class="text-center mt-12">
+        <button id="load-more" class="bg-primary text-white px-8 py-3 rounded-full hover:bg-opacity-90 font-semibold" data-i18n="courses.loadMore">Load More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-16 bg-white dark:bg-gray-800" role="region" aria-label="Testimonials">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-i18n="testimonials.title">Hear from Our Learners</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-neutral dark:bg-gray-700 rounded-2xl p-6 shadow-card">
+          <p class="text-gray-600 dark:text-gray-300 italic mb-4" data-i18n="testimonials.review1">"The Python course transformed my career! The projects were practical and the support was amazing."</p>
+          <div class="flex items-center">
+            <img loading="lazy" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikiversity.org%2Fwiki%2FPython&psig=AOvVaw2CZug2VvPm85kQKVzubyWE&ust=1746600471165000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCNCqwPmfjo0DFQAAAAAdAAAAABAE" alt="Sarah Johnson" class="w-12 h-12 rounded-full">
+            <div class="ml-3">
+              <p class="font-semibold dark:text-white">Sarah Johnson</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400" data-i18n="testimonials.role1">Software Developer</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-neutral dark:bg-gray-700 rounded-2xl p-6 shadow-card">
+          <p class="text-gray-600 dark:text-gray-300 italic mb-4" data-i18n="testimonials.review2">"Learning web development here was a game-changer. The instructors are top-notch!"</p>
+          <div class="flex items-center">
+            <img loading="lazy" src="https://via.placeholder.com/50" alt="Michael Chen" class="w-12 h-12 rounded-full">
+            <div class="ml-3">
+              <p class="font-semibold dark:text-white">Michael Chen</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400" data-i18n="testimonials.role2">Web Developer</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-neutral dark:bg-gray-700 rounded-2xl p-6 shadow-card">
+          <p class="text-gray-600 dark:text-gray-300 italic mb-4" data-i18n="testimonials.review3">"The AI course gave me the skills to land my dream job. Highly recommended!"</p>
+          <div class="flex items-center">
+            <img loading="lazy" src="https://via.placeholder.com/50" alt="Emily Rodriguez" class="w-12 h-12 rounded-full">
+            <div class="ml-3">
+              <p class="font-semibold dark:text-white">Emily Rodriguez</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400" data-i18n="testimonials.role3">Data Scientist</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-neutral dark:bg-gray-700 py-16" role="region" aria-label="About">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-8 gradient-text" data-i18n="about.title">Why CSE Academy?</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-12" data-i18n="about.subtitle">We empower learners with cutting-edge skills, expert-led courses, and hands-on projects to succeed in tech.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6">
+          <i class="fas fa-chalkboard-teacher text-4xl text-primary mb-4"></i>
+          <h3 class="text-xl font-semibold dark:text-white" data-i18n="about.instructors">Expert Instructors</h3>
+          <p class="text-gray-600 dark:text-gray-300" data-i18n="about.instructorsDesc">Learn from industry leaders with real-world experience.</p>
+        </div>
+        <div class="p-6">
+          <i class="fas fa-laptop-code text-4xl text-primary mb-4"></i>
+          <h3 class="text-xl font-semibold dark:text-white" data-i18n="about.projects">Hands-on Projects</h3>
+          <p class="text-gray-600 dark:text-gray-300" data-i18n="about.projectsDesc">Build portfolio-worthy projects to showcase your skills.</p>
+        </div>
+        <div class="p-6">
+          <i class="fas fa-certificate text-4xl text-primary mb-4"></i>
+          <h3 class="text-xl font-semibold dark:text-white" data-i18n="about.certification">Certification</h3>
+          <p class="text-gray-600 dark:text-gray-300" data-i18n="about.certificationDesc">Earn recognized certificates upon course completion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-16 bg-primary text-white" role="region" aria-label="Newsletter">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6" data-i18n="newsletter.title">Stay in the Loop</h2>
+      <p class="text-lg mb-8 max-w-2xl mx-auto" data-i18n="newsletter.subtitle">Get the latest course updates, tech insights, and exclusive offers.</p>
+      <div class="max-w-md mx-auto">
+        <div class="flex gap-2">
+          <input type="email" id="newsletter-email" class="flex-1 p-3 rounded-lg focus:ring-2 focus:ring-secondary dark:bg-gray-700 dark:text-white" placeholder="Your Email" aria-label="Newsletter email">
+          <button id="newsletter-submit" class="bg-secondary text-white px-6 py-3 rounded-lg hover:bg-opacity-90 flex items-center">
+            <span data-i18n="newsletter.subscribe">Subscribe</span>
+            <div id="newsletter-spinner" class="spinner ml-2 hidden"></div>
+          </button>
+        </div>
+        <div id="newsletter-error" class="text-red-300 mt-2 hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-neutral dark:bg-gray-900" role="region" aria-label="Contact">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-i18n="contact.title">Let's Connect</h2>
+      <div class="max-w-lg mx-auto">
+        <div class="mb-6">
+          <label for="name" class="block text-gray-700 dark:text-gray-300 font-semibold" data-i18n="contact.name">Name</label>
+          <input type="text" id="name" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" placeholder="Your Name" aria-label="Name">
+        </div>
+        <div class="mb-6">
+          <label for="email" class="block text-gray-700 dark:text-gray-300 font-semibold" data-i18n="contact.email">Email</label>
+          <input type="email" id="email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" placeholder="Your Email" aria-label="Email">
+        </div>
+        <div class="mb-6">
+          <label for="message" class="block text-gray-700 dark:text-gray-300 font-semibold" data-i18n="contact.message">Message</label>
+          <textarea id="message" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" rows="5" placeholder="Your Message" aria-label="Message"></textarea>
+        </div>
+        <button id="contact-submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-opacity-90 flex justify-center items-center">
+          <span data-i18n="contact.send">Send Message</span>
+          <div id="contact-spinner" class="spinner ml-2 hidden"></div>
+        </button>
+        <div id="contact-error" class="text-red-500 mt-2 hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate text-white py-12" role="contentinfo">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">CSE Academy</h3>
+          <p class="text-gray-400 text-sm" data-i18n="footer.description">Empowering the next generation of tech professionals.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4" data-i18n="footer.links">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#courses" class="hover:text-primary" data-i18n="footer.courses">Courses</a></li>
+            <li><a href="#about" class="hover:text-primary" data-i18n="footer.about">About</a></li>
+            <li><a href="#contact" class="hover:text-primary" data-i18n="footer.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4" data-i18n="footer.follow">Follow Us</h3>
+          <div class="flex space-x-4">
+            <a href="https://twitter.com" class="hover:text-primary" aria-label="Twitter"><i class="fab fa-twitter text-xl"></i></a>
+            <a href="https://linkedin.com" class="hover:text-primary" aria-label="LinkedIn"><i class="fab fa-linkedin text-xl"></i></a>
+            <a href="https://instagram.com" class="hover:text-primary" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+            <a href="https://facebook.com" class="hover:text-primary" aria-label="Facebook"><i class="fab fa-facebook text-xl"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4" data-i18n="footer.support">Support</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#faq" class="hover:text-primary">FAQ</a></li>
+            <li><a href="#terms" class="hover:text-primary">Terms</a></li>
+            <li><a href="#privacy" class="hover:text-primary">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center mt-8 text-gray-400 text-sm">© 2025 CSE Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase and App Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-performance-compat.js"></script>
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyByX2ofqduhITBUuDAAl1ZinT63dtsAXLw",
+      authDomain: "g-ai-9f519.firebaseapp.com",
+      projectId: "g-ai-9f519",
+      storageBucket: "g-ai-9f519.firebasestorage.app",
+      messagingSenderId: "341635366388",
+      appId: "1:341635366388:web:6240010ff4a62a0e774da1",
+      measurementId: "G-56P7V63S4Z"
+    };
+
+    // Initialize Firebase
+    let app, db, rtdb, perf;
+    try {
+      app = firebase.initializeApp(firebaseConfig);
+      db = firebase.firestore();
+      rtdb = firebase.database();
+      perf = firebase.performance();
+      console.log("Firebase initialized successfully");
+    } catch (error) {
+      console.error("Firebase initialization failed:", error.message);
+      alert("Failed to initialize Firebase. Please check your configuration.");
+    }
+
+    // Translation data
+    const translations = {
+      en: {
+        "hero.title": "Master Coding with CSE Academy",
+        "hero.subtitle": "Join thousands of learners transforming their careers with our industry-leading courses in programming, AI, and more.",
+        "hero.explore": "Explore Courses",
+        "hero.getStarted": "Get Started",
+        "filter.allCategories": "All Categories",
+        "filter.programming": "Programming",
+        "filter.web": "Web Development",
+        "filter.ai": "AI & ML",
+        "filter.cloud": "Cloud Computing",
+        "filter.data": "Data Science",
+        "filter.other": "Other",
+        "courses.title": "Discover Our Courses",
+        "courses.loadMore": "Load More",
+        "testimonials.title": "Hear from Our Learners",
+        "testimonials.review1": "The Python course transformed my career! The projects were practical and the support was amazing.",
+        "testimonials.role1": "Software Developer",
+        "testimonials.review2": "Learning web development here was a game-changer. The instructors are top-notch!",
+        "testimonials.role2": "Web Developer",
+        "testimonials.review3": "The AI course gave me the skills to land my dream job. Highly recommended!",
+        "testimonials.role3": "Data Scientist",
+        "about.title": "Why CSE Academy?",
+        "about.subtitle": "We empower learners with cutting-edge skills, expert-led courses, and hands-on projects to succeed in tech.",
+        "about.instructors": "Expert Instructors",
+        "about.instructorsDesc": "Learn from industry leaders with real-world experience.",
+        "about.projects": "Hands-on Projects",
+        "about.projectsDesc": "Build portfolio-worthy projects to showcase your skills.",
+        "about.certification": "Certification",
+        "about.certificationDesc": "Earn recognized certificates upon course completion.",
+        "newsletter.title": "Stay in the Loop",
+        "newsletter.subtitle": "Get the latest course updates, tech insights, and exclusive offers.",
+        "newsletter.subscribe": "Subscribe",
+        "newsletter.fillEmail": "Please enter an email address.",
+        "newsletter.success": "Subscribed successfully!",
+        "newsletter.error": "Error subscribing. Please try again.",
+        "contact.title": "Let's Connect",
+        "contact.name": "Name",
+        "contact.email": "Email",
+        "contact.message": "Message",
+        "contact.send": "Send Message",
+        "contact.fillFields": "Please fill in all fields.",
+        "contact.success": "Message sent successfully!",
+        "contact.error": "Error sending message. Please try again.",
+        "footer.description": "Empowering the next generation of tech professionals.",
+        "footer.links": "Quick Links",
+        "footer.courses": "Courses",
+        "footer.about": "About",
+        "footer.contact": "Contact",
+        "footer.follow": "Follow Us",
+        "footer.support": "Support"
+      }
+    };
+
+    // Courses data
+    const courses = [
+      {
+        id: "python",
+        title: "Python Programming",
+        description: "Master Python from beginner to advanced with real-world projects.",
+        image: "p-logo.png",
+        video: "invideo-ai-1080 Python Programming_ Master the Basics in 2025-05-05.mp4",
+        price: 500,
+        category: "programming",
+        popular: true,
+        duration: "20 hours",
+        rating: 4.8,
+        students: 12000
+      },
+      {
+        id: "cpp",
+        title: "C++ Programming",
+        description: "Learn C++ for system programming and competitive coding.",
+        image: "cpp.png",
+        video: "invideo-ai-1080 Master C++ in 60 Seconds! 2025-05-06.mp4",
+        price: 500,
+        category: "programming",
+        duration: "25 hours",
+        rating: 4.6,
+        students: 8500
+      },
+      {
+        id: "ml",
+        title: "Machine Learning Fundamentals",
+        description: "Master ML algorithms and build predictive models with hands-on projects.",
+        image: "ML.jpeg",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 500,
+        category: "ai",
+        popular: true,
+        duration: "30 hours",
+        rating: 4.9,
+        students: 15000
+      },
+      {
+        id: "ai",
+        title: "Artificial Intelligence Basics",
+        description: "Explore AI concepts and applications to kickstart your AI career.",
+        image: "ai.jpeg",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 500,
+        category: "ai",
+        duration: "22 hours",
+        rating: 4.7,
+        students: 9500
+      },
+      {
+        id: "dl",
+        title: "Deep Learning with TensorFlow",
+        description: "Dive into neural networks and DL with TensorFlow for cutting-edge AI solutions.",
+        image: "https://via.placeholder.com/300x150?text=Deep+Learning",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 100,
+        category: "ai",
+        duration: "35 hours",
+        rating: 4.8,
+        students: 11000
+      },
+      {
+        id: "genai",
+        title: "Generative AI Essentials",
+        description: "Learn to create AI-powered content with GANs and LLMs like never before!",
+        image: "https://via.placeholder.com/300x150?text=Generative+AI",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 109.99,
+        category: "ai",
+        popular: true,
+        duration: "28 hours",
+        rating: 4.9,
+        students: 13000
+      },
+      {
+        id: "nn",
+        title: "Neural Networks from Scratch",
+        description: "Build and train neural networks with Python for advanced AI applications.",
+        image: "https://via.placeholder.com/300x150?text=Neural+Networks",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 94.99,
+        category: "ai",
+        duration: "32 hours",
+        rating: 4.7,
+        students: 9000
+      },
+      {
+        id: "fullstack",
+        title: "Full Stack Web Development",
+        description: "Become a full-stack pro with MERN stack and real-world projects.",
+        image: "https://via.placeholder.com/300x150?text=Full+Stack",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 149.99,
+        category: "web",
+        popular: true,
+        duration: "40 hours",
+        rating: 4.8,
+        students: 20000
+      },
+      {
+        id: "aws",
+        title: "Cloud Computing with AWS",
+        description: "Master cloud architecture and services with AWS certification prep.",
+        image: "https://via.placeholder.com/300x150?text=Cloud+Computing",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 89.99,
+        category: "cloud",
+        duration: "30 hours",
+        rating: 4.6,
+        students: 10000
+      },
+      {
+        id: "java",
+        title: "Java Programming Mastery",
+        description: "Build robust applications with Java, from basics to advanced frameworks.",
+        image: "https://via.placeholder.com/300x150?text=Java",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 59.99,
+        category: "programming",
+        duration: "28 hours",
+        rating: 4.7,
+        students: 11000
+      },
+      {
+        id: "ruby",
+        title: "Ruby on Rails Development",
+        description: "Create dynamic web apps with Ruby on Rails in this practical course.",
+        image: "https://via.placeholder.com/300x150?text=Ruby",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 69.99,
+        category: "programming",
+        duration: "25 hours",
+        rating: 4.5,
+        students: 7500
+      },
+      {
+        id: "r",
+        title: "R for Data Analysis",
+        description: "Analyze and visualize data like a pro with R programming.",
+        image: "https://via.placeholder.com/300x150?text=R",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 64.99,
+        category: "programming",
+        duration: "20 hours",
+        rating: 4.6,
+        students: 8000
+      },
+      {
+        id: "stats",
+        title: "Statistics for Data Science",
+        description: "Unlock the power of data with statistical methods and tools.",
+        image: "https://via.placeholder.com/300x150?text=Statistics",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 74.99,
+        category: "data",
+        duration: "22 hours",
+        rating: 4.7,
+        students: 9000
+      },
+      {
+        id: "prob",
+        title: "Probability for Machine Learning",
+        description: "Master probability concepts to excel in ML and data science.",
+        image: "https://via.placeholder.com/300x150?text=Probability",
+        video: "https://www.w3schools.com/html/mov_bbb.mp4",
+        price: 69.99,
+        category: "data",
+        duration: "20 hours",
+        rating: 4.6,
+        students: 8500
+      }
+    ];
+
+    // State
+    let loadedCourses = 0;
+    const coursesPerLoad = 8;
+    let currentLanguage = 'en';
+
+    // Utilities
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Translation
+    function translatePage(lang) {
+      currentLanguage = lang;
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = translations[lang][key] || element.textContent;
+      });
+      document.getElementById('course-search').placeholder = translations[lang]['filter.searchPlaceholder'] || 'Search courses...';
+      document.getElementById('newsletter-email').placeholder = translations[lang]['contact.email'] || 'Your Email';
+      document.getElementById('name').placeholder = translations[lang]['contact.name'] || 'Your Name';
+      document.getElementById('email').placeholder = translations[lang]['contact.email'] || 'Your Email';
+      document.getElementById('message').placeholder = translations[lang]['contact.message'] || 'Your Message';
+      document.getElementById('chat-input').placeholder = 'Type your message...';
+    }
+
+    // Course Handling
+    function createCourseCard(course) {
+      return `
+        <div class="course-card bg-white dark:bg-gray-700 rounded-2xl shadow-card p-4 relative overflow-hidden" data-category="${course.category}">
+
+  <!-- Popular Badge -->
+  ${course.popular ? `
+    <div class="absolute top-2 right-2 bg-secondary text-white px-3 py-1 rounded-bl-lg text-xs font-semibold italic z-10">
+      Popular
+    </div>` : ''}
+
+  <!-- Responsive Image Wrapper -->
+  <div class="w-full h-40 flex items-center justify-center bg-gray-100 dark:bg-gray-600 rounded-lg overflow-hidden">
+  <img loading="lazy" src="${course.image}" alt="${course.title}" class="max-h-full max-w-full object-contain" />
+</div>
+
+
+  <!-- Course Details -->
+  <div class="p-2">
+    <h3 class="text-lg font-semibold dark:text-white line-clamp-1">${course.title}</h3>
+    <p class="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 mt-1">${course.description}</p>
+
+    <p class="text-primary font-bold mt-2 text-lg">₹${course.price.toFixed(2)}</p>
+
+    <!-- Buttons -->
+    <div class="flex gap-2 mt-3">
+      <button class="flex-1 bg-primary text-white py-2 rounded-lg hover:bg-opacity-90 text-sm font-semibold enroll-btn"
+              data-course-id="${course.id}" data-course-price="${course.price}" aria-label="Enroll in ${course.title}">
+        Enroll Now
+      </button>
+      <button class="px-3 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500"
+              onclick="previewCourse('${course.id}')" aria-label="Preview ${course.title}">
+        <i class="fas fa-play"></i>
+      </button>
+    </div>
+
+    <!-- Share Buttons -->
+    <div class="flex gap-2 mt-2 text-gray-500 dark:text-gray-400">
+      <button class="text-sm hover:text-primary" onclick="shareCourse('twitter', '${course.id}')" aria-label="Share on Twitter">
+        <i class="fab fa-twitter"></i>
+      </button>
+      <button class="text-sm hover:text-primary" onclick="shareCourse('linkedin', '${course.id}')" aria-label="Share on LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+      `;
+    }
+
+    function loadCourses() {
+      const coursesContainer = document.getElementById('courses-container');
+      const nextCourses = courses.slice(loadedCourses, loadedCourses + coursesPerLoad);
+      nextCourses.forEach(course => {
+        coursesContainer.insertAdjacentHTML('beforeend', createCourseCard(course));
+      });
+      loadedCourses += nextCourses.length;
+      if (loadedCourses >= courses.length) {
+        document.getElementById('load-more').style.display = 'none';
+      }
+      filterCourses();
+      // Attach event listeners to enroll buttons
+      document.querySelectorAll('.enroll-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const courseId = button.getAttribute('data-course-id');
+          const coursePrice = parseFloat(button.getAttribute('data-course-price'));
+          enrollCourse(courseId, coursePrice);
+        });
+      });
+      gsap.from(coursesContainer.children.slice(-nextCourses.length), {
+        opacity: 0,
+        y: 20,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: 'power2.out'
+      });
+    }
+
+    function filterCourses() {
+      const searchQuery = document.getElementById('course-search').value.toLowerCase();
+      const category = document.getElementById('course-category').value;
+      const coursesContainer = document.getElementById('courses-container');
+      const courseCards = coursesContainer.querySelectorAll('.course-card');
+      courseCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const courseCategory = card.getAttribute('data-category');
+        const matchesSearch = title.includes(searchQuery);
+        const matchesCategory = category === 'all' || courseCategory === category;
+        card.style.display = matchesSearch && matchesCategory ? 'block' : 'none';
+      });
+      updateSearchSuggestions(searchQuery);
+    }
+
+    function updateSearchSuggestions(query) {
+      const suggestionsContainer = document.getElementById('search-suggestions');
+      if (!query) {
+        suggestionsContainer.classList.add('hidden');
+        return;
+      }
+      const suggestions = courses
+        .filter(course => course.title.toLowerCase().includes(query))
+        .slice(0, 5)
+        .map(course => `
+          <div class="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer text-sm" onclick="selectSuggestion('${course.title}')">${course.title}</div>
+        `)
+        .join('');
+      suggestionsContainer.innerHTML = suggestions || '<div class="p-2 text-gray-500 dark:text-gray-400 text-sm">No results</div>';
+      suggestionsContainer.classList.remove('hidden');
+    }
+
+    function selectSuggestion(title) {
+      document.getElementById('course-search').value = title;
+      document.getElementById('search-suggestions').classList.add('hidden');
+      filterCourses();
+    }
+
+    function previewCourse(courseId) {
+      const course = courses.find(c => c.id === courseId);
+      if (!course) return;
+      const videoModal = document.getElementById('video-modal');
+      const videoPlayer = document.getElementById('video-player');
+      const videoTitle = document.getElementById('video-title');
+      videoTitle.textContent = `${course.title} Preview`;
+      videoPlayer.src = course.video;
+      videoModal.classList.remove('hidden');
+      videoPlayer.play();
+      gsap.from(videoModal.querySelector('.bg-white'), {
+        scale: 0.9,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    }
+
+    // Razorpay Payment Handling
+    async function createRazorpayOrder(courseId, price) {
+      // Simulate server-side order creation (replace with actual server call)
+      try {
+        return {
+          order_id: 'order_' + Math.random().toString(36).substr(2),
+          amount: price * 100, // Convert to paise
+          currency: 'INR'
+        };
+      } catch (error) {
+        console.error('Error creating Razorpay order:', error);
+        throw new Error('Failed to create payment order.');
+      }
+    }
+
+    async function enrollCourse(courseId, price) {
+      // Replace with your actual Razorpay key ID (test or live)
+      const RAZORPAY_KEY_ID = 'rzp_test_vUFGPnceZcPMnO'; // Obtain from Razorpay dashboard: https://dashboard.razorpay.com/
+
+      if (!RAZORPAY_KEY_ID || RAZORPAY_KEY_ID === '') {
+        alert('Please configure a valid Razorpay Key ID in the script.');
+        return;
+      }
+
+      // Proceed with Razorpay integration
+
+      try {
+        const order = await createRazorpayOrder(courseId, price);
+        const course = courses.find(c => c.id === courseId);
+        if (!course) {
+          alert('Course not found.');
+          return;
+        }
+
+        const options = {
+          key: RAZORPAY_KEY_ID,
+          amount: order.amount,
+          currency: order.currency,
+          name: 'CSE Academy',
+          description: `Enrollment for ${course.title}`,
+          order_id: order.order_id,
+          handler: async function (response) {
+            try {
+              const userId = Math.random().toString(36).substr(2) + '_' + Date.now();
+              await db.collection('enrollments').add({
+                userId: userId,
+                courseId: courseId,
+                timestamp: Date.now(),
+                paymentId: response.razorpay_payment_id,
+                orderId: response.razorpay_order_id
+              });
+              alert(`Successfully enrolled in ${course.title}! Check your email for confirmation.`);
+            } catch (error) {
+              console.error('Firestore enrollment error:', error);
+              alert(`Payment successful, but failed to record enrollment. Please contact support with Payment ID: ${response.razorpay_payment_id}`);
+            }
+          },
+          prefill: {
+            email: '',
+            contact: ''
+          },
+          methods: {
+            upi: true,
+            card: true,
+            netbanking: true,
+            wallet: true
+          },
+          theme: {
+            color: '#4F46E5'
+          }
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.on('payment.failed', function (response) {
+          console.error('Payment failed:', response.error);
+          alert(`Payment failed: ${response.error.description}. Please try again.`);
+        });
+        rzp.open();
+      } catch (error) {
+        console.error('Enrollment error:', error);
+        alert('Error initiating payment. Please try again or contact support.');
+      }
+    }
+
+    function shareCourse(platform, courseId) {
+      const course = courses.find(c => c.id === courseId);
+      const url = window.location.origin + `#courses/${courseId}`;
+      const text = `Check out this amazing course: ${course.title} at CSE Academy!`;
+      let shareUrl = '';
+      if (platform === 'twitter') {
+        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+      } else if (platform === 'linkedin') {
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+      }
+      window.open(shareUrl, '_blank');
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      // Dark mode toggle
+      document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+        document.getElementById('dark-mode-toggle').innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun text-lg"></i>' : '<i class="fas fa-moon text-lg"></i>';
+      });
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark');
+        document.getElementById('dark-mode-toggle').innerHTML = '<i class="fas fa-sun text-lg"></i>';
+      }
+
+      // Mobile menu
+      document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+      });
+
+      // Video modal
+      document.getElementById('close-video').addEventListener('click', () => {
+        const videoModal = document.getElementById('video-modal');
+        const videoPlayer = document.getElementById('video-player');
+        videoPlayer.pause();
+        videoModal.classList.add('hidden');
+      });
+
+      // Chat widget
+      document.getElementById('chat-toggle').addEventListener('click', () => {
+        const chatBox = document.getElementById('chat-box');
+        chatBox.classList.toggle('hidden');
+        if (!chatBox.classList.contains('hidden')) {
+          gsap.from(chatBox, { scale: 0.9, opacity: 0, duration: 0.3, ease: 'power2.out' });
+        }
+      });
+      document.getElementById('close-chat').addEventListener('click', () => {
+        document.getElementById('chat-box').classList.add('hidden');
+      });
+      document.getElementById('chat-input').addEventListener('keypress', async e => {
+        if (e.key === 'Enter' && e.target.value.trim()) {
+          const message = e.target.value;
+          const messagesDiv = document.getElementById('chat-messages');
+          messagesDiv.insertAdjacentHTML('beforeend', `
+            <div class="text-right mb-2">
+              <span class="bg-primary text-white p-2 rounded-lg inline-block text-sm">${message}</span>
+            </div>
+          `);
+          e.target.value = '';
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+          setTimeout(() => {
+            messagesDiv.insertAdjacentHTML('beforeend', `
+              <div class="mb-2">
+                <span class="bg-gray-200 dark:bg-gray-600 p-2 rounded-lg inline-block text-sm">Thanks for your message! How can we assist you further?</span>
+              </div>
+            `);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+          }, 1000);
+          await rtdb.ref(`chat/guest_${Date.now()}`).push({
+            message,
+            timestamp: Date.now()
+          });
+        }
+      });
+
+      // Course filter
+      document.getElementById('course-search').addEventListener('input', debounce(filterCourses, 300));
+      document.getElementById('course-category').addEventListener('change', filterCourses);
+      document.getElementById('load-more').addEventListener('click', loadCourses);
+
+      // Newsletter subscription
+      document.getElementById('newsletter-submit').addEventListener('click', async () => {
+        const email = document.getElementById('newsletter-email').value;
+        const errorDiv = document.getElementById('newsletter-error');
+        const spinner = document.getElementById('newsletter-spinner');
+        if (!email) {
+          errorDiv.textContent = translations[currentLanguage]['newsletter.fillEmail'];
+          errorDiv.classList.remove('hidden');
+          return;
+        }
+        errorDiv.classList.add('hidden');
+        spinner.classList.remove('hidden');
+        try {
+          await db.collection('subscribers').add({ email, timestamp: Date.now() });
+          errorDiv.textContent = translations[currentLanguage]['newsletter.success'];
+          errorDiv.classList.remove('hidden', 'text-red-300');
+          errorDiv.classList.add('text-green-300');
+          document.getElementById('newsletter-email').value = '';
+        } catch (error) {
+          errorDiv.textContent = translations[currentLanguage]['newsletter.error'];
+          errorDiv.classList.remove('hidden', 'text-green-300');
+          errorDiv.classList.add('text-red-300');
+        } finally {
+          spinner.classList.add('hidden');
+        }
+      });
+
+      // Contact form
+      document.getElementById('contact-submit').addEventListener('click', async () => {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const errorDiv = document.getElementById('contact-error');
+        const spinner = document.getElementById('contact-spinner');
+        if (!name || !email || !message) {
+          errorDiv.textContent = translations[currentLanguage]['contact.fillFields'];
+          errorDiv.classList.remove('hidden');
+          return;
+        }
+        errorDiv.classList.add('hidden');
+        spinner.classList.remove('hidden');
+        try {
+          await db.collection('contacts').add({
+            name,
+            email,
+            message,
+            timestamp: Date.now()
+          });
+          errorDiv.textContent = translations[currentLanguage]['contact.success'];
+          errorDiv.classList.remove('hidden', 'text-red-500');
+          errorDiv.classList.add('text-green-500');
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('message').value = '';
+        } catch (error) {
+          errorDiv.textContent = translations[currentLanguage]['contact.error'];
+          errorDiv.classList.remove('hidden', 'text-green-500');
+          errorDiv.classList.add('text-red-500');
+        } finally {
+          spinner.classList.add('hidden');
+        }
+      });
+
+      // Initial load
+      translatePage('en');
+      loadCourses();
+
+      // Performance monitoring
+      if (perf) {
+        const trace = perf.trace('page_load');
+        trace.start();
+        window.addEventListener('load', () => {
+          trace.stop();
+        });
+      }
+    });
+  </script>
+  <script src="pythonvideo.js"></script>
+</body>
+</html>
